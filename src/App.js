@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Award, Menu, X, Plus, Settings, Bell } from 'lucide-react';
-export default function BlessedFadesWebsite() {
+import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Award, Menu, X, Plus, Settings, Bell, LogOut } from 'lucide-react';export default function BlessedFadesWebsite() {
   const [currentPage, setCurrentPage] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isBarberLoggedIn, setIsBarberLoggedIn] = useState(false);
