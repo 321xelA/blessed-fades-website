@@ -105,10 +105,6 @@ import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Aw
     }
   };
   
-  const handleRemoveFromQueue = (id) => {
-    setWalkInQueue(walkInQueue.filter(w => w.id !== id));
-  };
-  
   const handleSaveSettings = () => {
     setShopSettings({...tempSettings});
     setEditingSettings(false);
