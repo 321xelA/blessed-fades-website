@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Award, Menu, X, Plus, Settings, Bell, LogOut } from 'lucide-react';export default function BlessedFadesWebsite() {
+import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Award, Menu, X, Plus, Settings, Bell, LogOut } from 'lucide-react';
+
+export default function BlessedFadesWebsite() {
   const [currentPage, setCurrentPage] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isBarberLoggedIn, setIsBarberLoggedIn] = useState(false);
@@ -154,12 +156,27 @@ import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Aw
             </button>
           </div>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="md:hidden fixed top-20 left-0 right-0 bg-white border-b border-gray-200 px-4 py-4 space-y-2 z-40">
+            <button onClick={() => { setCurrentPage('home'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Home</button>
+            <button onClick={() => { setCurrentPage('services'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Services</button>
+            <button onClick={() => { setCurrentPage('barbers'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Barbers</button>
+            <button onClick={() => { setCurrentPage('gallery'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Gallery</button>
+            <button onClick={() => { setCurrentPage('walkin-queue'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Walk-In Queue</button>
+            <button onClick={() => { setCurrentPage('contact'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Contact</button>
+            {isBarberLoggedIn ? (
+              <button onClick={() => { setCurrentPage('barber-dashboard'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Dashboard</button>
+            ) : (
+              <button onClick={() => { setCurrentPage('barber-login'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 hover:text-blue-600 font-semibold">Staff Login</button>
+            )}
+          </div>
+        )}
       </nav>
 
       <div className="flex-grow">
         {currentPage === 'home' && (
           <div>
-            {/* Hero */}
             <div className="relative h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center">
               <div className="absolute inset-0 opacity-10 mix-blend-overlay">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900"></div>
@@ -173,7 +190,6 @@ import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Aw
               </div>
             </div>
 
-            {/* Why Us */}
             <div className="py-20 bg-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-5xl font-bold text-center mb-4 text-gray-900">The Blessed Fades Experience</h2>
@@ -195,7 +211,6 @@ import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Aw
               </div>
             </div>
 
-            {/* Info Section */}
             <div className="py-16 bg-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-3 gap-12">
@@ -828,7 +843,6 @@ import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Aw
         )}
       </div>
 
-      {/* Footer */}
       {currentPage !== 'barber-login' && currentPage !== 'barber-dashboard' && currentPage !== 'admin-settings' && (
         <footer className="bg-gradient-to-br from-gray-900 to-blue-900 text-white py-16 border-t border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -862,9 +876,6 @@ import { Calendar, Clock, MapPin, Phone, Mail, Share2, Scissors, Users, Star, Aw
               <div>
                 <h3 className="font-bold text-lg mb-6">Connect</h3>
                 <div className="flex space-x-4 mb-6">
-                  <button className="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-lg transition">
-                    <Share2 className="w-5 h-5" />
-                  </button>
                   <button className="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-lg transition">
                     <Share2 className="w-5 h-5" />
                   </button>
